@@ -59,6 +59,7 @@ TASK_FACTORIES = {
     "if_tap": Macro.add_if_tap,
     "if_single": Macro.add_if_single,
     "add": Macro.add_add,
+    "exec": Macro.add_exec,
     # Those are only kept for backwards compatibility with old macros. The space for
     # writing macro was very constrained in the past, so shorthands were introduced:
     "m": Macro.add_modify,

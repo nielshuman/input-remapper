@@ -37,6 +37,7 @@ w(1000).m(Shift_L, r(2, k(a))).w(10).k(b): <1s> A A <10ms> b
 from __future__ import annotations
 
 import asyncio
+import subprocess
 import copy
 import math
 import re
@@ -692,6 +693,16 @@ class Macro:
             else:
                 if else_:
                     await else_.run(handler)
+
+        self.tasks.append(task)
+
+    def add_exec(self, command: str):
+        """Execute a command."""
+        _type_check(command, [str], "exec", 1)
+        # remove quotes
+        command = command.strip('"')
+        async def task(_):
+            subprocess.run(command, shell=True)
 
         self.tasks.append(task)
 
